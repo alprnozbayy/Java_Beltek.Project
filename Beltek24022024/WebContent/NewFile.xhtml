@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head></h:head>
+<body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+			Ulke Kodu:<h:inputText
+					value="#{ogrenciBean.ogrenci.anahtar.ulkeKodu}" />
+			Kimlik No:<h:inputText
+					value="#{ogrenciBean.ogrenci.anahtar.kimlikNo}" />
+			Ad:<h:inputText value="#{ogrenciBean.ogrenci.ad}" />
+			Soyad:<h:inputText value="#{ogrenciBean.ogrenci.soyad}" />
+			Yas:<h:inputText value="#{ogrenciBean.ogrenci.yas}" />
+			Cadde:<h:inputText value="#{ogrenciBean.ogrenci.adres.cadde}" />
+			Sokak:<h:inputText value="#{ogrenciBean.ogrenci.adres.sokak}" />
+			Fakulte Adi:<h:inputText
+					value="#{ogrenciBean.ogrenci.fakulte.fakulteAdi}" />
+			Bolum Adi:<h:inputText
+					value="#{ogrenciBean.ogrenci.fakulte.bolumAdi}" />
+				<h:commandButton action="#{ogrenciBean.kaydet()}" value="kaydet" />
+				<h:commandButton action="#{ogrenciBean.guncelle()}" value="Guncelle" />
+			Ara Ad:<h:inputText value="#{ogrenciBean.araAd}" />
+			Ara Soyad:<h:inputText value="#{ogrenciBean.araSoyad}" />
+				<h:commandButton action="#{ogrenciBean.ara()}" value="Ara" />
+			</h:panelGrid>
+			<p:dataTable value="#{ogrenciBean.liste}" var="cls">
+				<f:facet name="header">Ogrenci Listesi</f:facet>
+				<p:column>
+					<f:facet name="header">Ogrenci Guncelle</f:facet>
+					<h:commandLink value="Sec">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciBean.ogrenci}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header"> Ogrenci Sil</f:facet>
+					<h:commandLink action="#{ogrenciBean.sil()}" value="Sil">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciBean}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Ad</f:facet>
+					<h:outputText value="#{cls.ad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Soyad</f:facet>
+					<h:outputText value="#{cls.soyad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Yas</f:facet>
+					<h:outputText value="#{cls.yas}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Cadde</f:facet>
+					<h:outputText value="#{cls.adres.cadde}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Sokak</f:facet>
+					<h:outputText value="#{cls.adres.sokak}" />
+				</p:column>
+			</p:dataTable>
+			<br />
+			<p:dataTable value="#{ogrenciBean.araListe}" var="cls">
+				<f:facet name="header">Ogrenci Listesi</f:facet>
+				<p:column>
+					<f:facet name="header">Ogrenci Guncelle</f:facet>
+					<h:commandLink value="Sec">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciBean.ogrenci}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header"> Ogrenci Sil</f:facet>
+					<h:commandLink action="#{ogrenciBean.sil()}" value="Sil">
+						<f:setPropertyActionListener value="#{cls}"
+							target="#{ogrenciBean}" />
+					</h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Ad</f:facet>
+					<h:outputText value="#{cls.ad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Soyad</f:facet>
+					<h:outputText value="#{cls.soyad}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Ogrenci Yas</f:facet>
+					<h:outputText value="#{cls.yas}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</f:view>
+</body>
+</html>
